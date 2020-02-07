@@ -87,7 +87,7 @@ class S(BaseHTTPRequestHandler):
 
 def run(server_class=HTTPServer, handler_class=S, port=int(parser_args.port)):
   logging.basicConfig(level=logging.INFO)
-  server_address = ('', port)
+  server_address = (parser_args.ip, port)
   httpd = server_class(server_address, handler_class)
   logging.info('Starting httpd...\n')
   try:
