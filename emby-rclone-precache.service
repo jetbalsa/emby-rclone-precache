@@ -1,0 +1,17 @@
+[Unit]
+Description=Emby Rclone Pre-Cache
+After=network-online.target
+
+[Service]
+User=emby
+Group=emby
+Type=simple
+ExecStart=/opt/emby-rclone-precache/run.py \
+  --map "/localpath/movies:gdrivepath/Movies,//192.168.1.191/drive:/"
+Restart=on-abort
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
+[Install]
+WantedBy=default.target
